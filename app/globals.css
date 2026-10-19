@@ -1,26 +1,196 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
+/* Dark only: <html class="dark"> is always set, so shadcn's `dark:` styles always apply. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+ * Primitives. Only these and the semantic tokens below exist as colors:
+ * Tailwind's default palette is removed so off-system colors can't creep in.
+ * ------------------------------------------------------------------------- */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-coral-50: #fff5f5;
+  --color-coral-100: #ffe8e8;
+  --color-coral-200: #ffd1d1;
+  --color-coral-300: #ffadad;
+  --color-coral-400: #ff8585;
+  --color-coral-500: #f85e5e;
+  --color-coral-600: #e53e3e;
+  --color-coral-700: #c02d2d;
+  --color-coral-800: #9e2828;
+  --color-coral-900: #832727;
+  --color-coral-950: #471010;
+
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a; /* 4.0:1 on background: never use for text */
+  --color-zinc-600: #52525b;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
+  --color-zinc-950: #09090b;
+
+  /* Type scale (plan §4). Display and h1 shrink on small screens. */
+  --text-display: clamp(2.5rem, 1.6rem + 3.8vw, 3.5rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: clamp(2rem, 1.6rem + 1.6vw, 2.5rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.015em;
+  --text-h2: 1.75rem;
+  --text-h2--line-height: 1.2;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.3;
+  --text-base: 1rem;
+  --text-base--line-height: 1.7;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+
+  /* Radius: 6 tags, 8 buttons/inputs, 12 cards, 14 large cards, full pills. */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Spacing uses Tailwind's 4px base: 1=4, 2=8, 3=12, 4=16, 6=24, 8=32, 12=48, 16=64, 24=96. */
+
+/* ---------------------------------------------------------------------------
+ * Semantic tokens. Components use only these, so a light theme later means
+ * redefining this block, not touching components.
+ * ------------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  --background: #0c0c0e;
+  --card: #161618;
+  --surface-raised: #1f1f23;
+  --border: #27272a;
+  --border-strong: #3f3f46;
+  --foreground: #f4f4f5;
+  --muted-foreground: #a1a1aa;
+  --accent: #ffadad;
+  --accent-hover: #ffc7c7;
+  --on-accent: #0c0c0e;
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
+  --destructive: #f87171;
+  --success: #4ade80;
+
+  /* shadcn aliases. Note: in this project `accent` is the coral brand color,
+     not shadcn's subtle hover surface; use `surface-raised` for that. */
+  --primary: var(--accent);
+  --primary-foreground: var(--on-accent);
+  --accent-foreground: var(--on-accent);
+  --secondary: var(--surface-raised);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface-raised);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  /* Form field outlines need 3:1 (WCAG 1.4.11); border-strong is only 1.9:1. */
+  --input: #71717a; /* zinc-500 */
+  --ring: var(--accent);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-on-accent: var(--on-accent);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background font-sans text-base text-foreground;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-normal text-balance text-foreground;
+  }
+  h1 {
+    @apply text-h1;
+  }
+  h2 {
+    @apply text-h2;
+  }
+  h3 {
+    @apply text-h3;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    @apply font-mono;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--foreground);
+  }
+
+  /* One focus style everywhere: solid coral ring, keyboard only. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Motion off for users who ask for it. GSAP code also checks this (subtask 5). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
