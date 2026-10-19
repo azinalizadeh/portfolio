@@ -1,0 +1,37 @@
+---
+# Placeholder content. Replace with your own project.
+title: Checkout API
+slug: checkout-api
+pitch: A payments service that cut checkout latency in half for a mid-size e-commerce store.
+type: work
+featured: false
+order: 3
+date: 2024-09-10
+tags: [API, Payments, Performance]
+thumbnail:
+  src: ./cover.svg
+  alt: Checkout API latency chart before and after the rewrite
+problem: >-
+  The monolith's checkout endpoint took over two seconds at peak, and every
+  payment provider change meant a risky release of the whole store.
+solution: >-
+  A separate checkout service with idempotent payment intents, a provider
+  adapter layer, and a queue for everything that doesn't need to block the
+  customer.
+features:
+  - title: Idempotent payments
+    description: Retries and double clicks can never charge a customer twice.
+  - title: Provider adapters
+    description: Switching or adding a payment provider is one adapter, not a release.
+stack: [Node.js, TypeScript, Fastify, PostgreSQL, RabbitMQ]
+results:
+  - value: 52%
+    label: lower p95 checkout latency
+  - value: 0
+    label: duplicate charges since launch
+---
+
+## Notes
+
+The biggest win wasn't the rewrite itself but moving receipt emails, stock
+updates and analytics events off the request path.

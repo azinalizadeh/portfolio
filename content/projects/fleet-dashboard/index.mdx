@@ -1,0 +1,40 @@
+---
+# Placeholder content. Replace with your own project.
+title: Fleet Dashboard
+slug: fleet-dashboard
+pitch: Real-time tracking and maintenance planning for a 400-vehicle delivery fleet.
+type: work
+featured: true
+order: 2
+date: 2025-11-15
+tags: [Dashboard, Real-time, Maps]
+thumbnail:
+  src: ./cover.svg
+  alt: Fleet Dashboard map with vehicle markers and a status sidebar
+problem: >-
+  Dispatchers tracked vehicles across three tools and a shared spreadsheet, so
+  breakdowns were spotted late and maintenance was scheduled by memory.
+solution: >-
+  One dashboard that streams vehicle positions, flags anomalies from engine
+  telemetry, and turns service intervals into a calendar the workshop can plan
+  around.
+features:
+  - title: Live map
+    description: Positions update every two seconds over WebSockets, clustered at low zoom.
+  - title: Anomaly alerts
+    description: Engine-temperature and fuel-drop rules raise alerts before a breakdown.
+  - title: Service calendar
+    description: Upcoming maintenance per vehicle, with drag-to-reschedule.
+stack: [React, Next.js, TypeScript, Go, PostgreSQL, Redis]
+results:
+  - value: 38%
+    label: fewer roadside breakdowns in six months
+  - value: 3 → 1
+    label: tools dispatchers need open
+---
+
+## My role
+
+I led the frontend and the real-time layer: the WebSocket gateway in Go, the
+map clustering, and the alert rules engine that the operations team can edit
+without a deploy.

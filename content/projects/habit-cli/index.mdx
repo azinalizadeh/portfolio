@@ -1,0 +1,32 @@
+---
+# Placeholder content. Replace with your own project.
+title: Habit CLI
+slug: habit-cli
+pitch: A tiny terminal habit tracker with streaks, a heatmap, and plain-text storage.
+type: side
+featured: false
+order: 4
+date: 2024-03-02
+tags: [CLI, Open source]
+thumbnail:
+  src: ./cover.svg
+  alt: Habit CLI heatmap of completed habits in a terminal
+repoUrl: https://github.com/example/habit-cli
+problem: >-
+  Habit apps want accounts, notifications and subscriptions. I wanted a
+  checkbox I could tick from the terminal I already have open.
+solution: >-
+  A single binary that stores habits in a plain-text file you can sync with
+  any tool, and prints a GitHub-style heatmap of your streaks.
+features:
+  - title: Plain-text storage
+    description: One line per day in a file you own, easy to diff and back up.
+  - title: Heatmap
+    description: A year of habits at a glance, right in the terminal.
+stack: [Rust, clap, ratatui]
+---
+
+## Why Rust
+
+Startup time. A habit tracker you run ten times a day has to feel instant,
+and a single static binary is easy to install anywhere.

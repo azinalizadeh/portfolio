@@ -1,0 +1,23 @@
+# Placeholder content. Replace with your own experience.
+# Newest first. Omit `end` for your current role.
+- company: Northwind Logistics
+  role: Senior Software Engineer
+  location: Remote
+  url: https://example.com
+  start: 2024-02
+  summary: Lead engineer on the fleet operations platform used by 60 dispatchers.
+  highlights:
+    - Built the real-time vehicle tracking layer (Go, WebSockets) handling 400 vehicles.
+    - Designed the alert rules engine that cut roadside breakdowns by 38%.
+    - Mentored three engineers and introduced design reviews.
+  stack: [TypeScript, React, Next.js, Go, PostgreSQL]
+- company: Contoso Commerce
+  role: Software Engineer
+  location: Berlin, Germany
+  start: 2021-06
+  end: 2024-01
+  summary: Backend engineer on checkout and payments for a mid-size online store.
+  highlights:
+    - Rewrote checkout as a separate service, halving p95 latency.
+    - Added idempotent payment intents; zero duplicate charges since launch.
+  stack: [Node.js, TypeScript, Fastify, RabbitMQ]

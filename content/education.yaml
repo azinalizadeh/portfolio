@@ -1,0 +1,9 @@
+# Placeholder content. Replace with your own education.
+- school: Example University of Technology
+  degree: BSc
+  field: Computer Science
+  location: Example City
+  start: 2017-09
+  end: 2021-06
+  notes:
+    - Thesis on latency-aware scheduling for message queues.

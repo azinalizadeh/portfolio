@@ -1,0 +1,61 @@
+---
+# Placeholder content. Replace with your own project.
+title: Invoice Bot
+slug: invoice-bot
+pitch: A Telegram bot that reads invoice photos and files them into your bookkeeping sheet in seconds.
+type: side
+featured: true
+order: 1
+date: 2026-06-01
+tags: [AI, Automation, Bot]
+thumbnail:
+  src: ./cover.svg
+  alt: Invoice Bot dashboard showing a list of parsed invoices
+liveUrl: https://app.invoice-bot.example.com
+repoUrl: https://github.com/example/invoice-bot
+problem: >-
+  Freelancers lose hours every month typing invoice totals, dates and vendors
+  into spreadsheets by hand, and mistakes only show up at tax time.
+solution: >-
+  Send a photo to the bot. It extracts the fields with a vision model, checks
+  them against simple rules, asks you to confirm anything uncertain, and
+  appends a clean row to your sheet.
+features:
+  - title: Photo to row
+    description: Snap an invoice and get a structured row in under five seconds.
+  - title: Confidence checks
+    description: Low-confidence fields are sent back to you as quick yes/no questions.
+  - title: Monthly summary
+    description: A digest on the first of the month with totals per vendor and category.
+stack: [TypeScript, Node.js, grammY, PostgreSQL, Docker]
+screenshots:
+  - src: ./screenshot-1.svg
+    alt: The bot's inbox view listing recent invoices and their status
+video:
+  provider: youtube
+  id: dQw4w9WgXcQ
+  title: Invoice Bot walkthrough
+results:
+  - value: 6 h
+    label: saved per month for early users
+  - value: 97%
+    label: fields extracted without correction
+---
+
+## How it works
+
+Every photo goes through three steps: **extract**, **validate**, **file**.
+Extraction uses a vision model with a strict JSON schema. Validation is plain
+code: totals must add up, dates must be in the past, vendors are matched
+against the ones you've seen before.
+
+```ts
+const invoice = InvoiceSchema.parse(await extract(photo));
+if (invoice.confidence < 0.8) await askToConfirm(invoice);
+await sheet.append(toRow(invoice));
+```
+
+## What I learned
+
+Asking one precise question beats showing a form. Users confirm a single field
+in a tap, but abandon a five-field review screen.

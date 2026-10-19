@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#161618"/>
+  <rect x="80" y="80" width="1440" height="840" rx="28" fill="#1F1F23" stroke="#3F3F46" stroke-width="2"/>
+  <rect x="80" y="80" width="1440" height="72" rx="28" fill="#27272A"/>
+  <circle cx="132" cy="116" r="10" fill="#3F3F46"/><circle cx="166" cy="116" r="10" fill="#3F3F46"/><circle cx="200" cy="116" r="10" fill="#3F3F46"/>
+  <rect x="160" y="240" width="520" height="40" rx="8" fill="#FFADAD"/>
+  <rect x="160" y="310" width="760" height="20" rx="6" fill="#3F3F46"/>
+  <rect x="160" y="350" width="640" height="20" rx="6" fill="#3F3F46"/>
+  <rect x="160" y="460" width="400" height="320" rx="16" fill="#27272A"/>
+  <rect x="600" y="460" width="400" height="320" rx="16" fill="#27272A"/>
+  <rect x="1040" y="460" width="400" height="320" rx="16" fill="#27272A"/>
+  <text x="1440" y="290" text-anchor="end" font-family="ui-monospace, monospace" font-size="36" fill="#A1A1AA">checkout-api</text>
+</svg>

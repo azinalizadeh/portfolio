@@ -1,0 +1,14 @@
+# Placeholder content. Replace with your own skills.
+# One entry per group; the bento grid shows groups in this order.
+- name: Frontend
+  summary: Fast, accessible interfaces with a design system behind them.
+  items: [TypeScript, React, Next.js, Tailwind CSS, GSAP, Testing Library]
+- name: Backend
+  summary: APIs and services that stay boring under load.
+  items: [Node.js, Go, PostgreSQL, Redis, RabbitMQ, REST, WebSockets]
+- name: AI and automation
+  summary: Putting language and vision models to work inside real products.
+  items: [LLM APIs, Structured output, Evals, Prompt design]
+- name: Infrastructure
+  summary: Small, reproducible deployments I can reason about.
+  items: [Docker, Caddy, Linux, GitHub Actions, Observability]

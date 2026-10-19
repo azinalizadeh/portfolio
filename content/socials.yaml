@@ -1,0 +1,13 @@
+# Placeholder content. Replace with your own links.
+- kind: github
+  label: GitHub
+  handle: "@example"
+  url: https://github.com/example
+- kind: linkedin
+  label: LinkedIn
+  handle: in/example
+  url: https://www.linkedin.com/in/example
+- kind: email
+  label: Email
+  handle: hello@example.com
+  url: mailto:hello@example.com
